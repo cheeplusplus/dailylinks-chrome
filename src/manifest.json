@@ -2,7 +2,7 @@
 	"name": "DailyLinks",
 	"version": "1.0",
 	"manifest_version": 2,
-	"description": "DailyLinks is a Chrome extension that makes it easy to open those websites you visit every day, and supports different links per day (good for webcomics).",
+	"description": "DailyLinks makes it easy to open those websites you visit every day, supporting different links per day.",
 	"icons": {
 		"32": "icon32.png",
 		"48": "icon48.png",
@@ -11,7 +11,6 @@
 	"homepage_url": "http://andrewneo.github.com/dailylinks-chrome/",
 	"options_page": "options.html",
 	"permissions": [
-		"storage",
-		"tabs"
+		"storage"
 	]
 }
