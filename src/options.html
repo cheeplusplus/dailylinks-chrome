@@ -1,0 +1,46 @@
+<html>
+	<!-- DailyLinks settings -->
+	<head>
+		<title>DailyLinks Settings</title>
+		<script type="text/javascript" src="js/lib/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="js/src/common.js"></script>
+		<script type="text/javascript" src="js/src/options.js"></script>
+		<link rel="shortcut icon" href="icon32.png" />
+	</head>
+	<body>
+		<h1>DailyLinks Settings</h1>
+		Drag this bookmarklet: <a href="links.html" title="DailyLinks"><img src="icon32.png" border="0" style="padding-right: 4px" />DailyLinks</a>
+		<br />
+		<br />
+		<table id="links_table" border="1">
+			<thead>
+				<tr><th>Order</th><th>S M T W T F S</th><th>Name</th><th>URL</th><th>Enabled</th><td></td></tr>
+			</thead>
+			<tbody></tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td>
+						<input id="day_su" type="checkbox" />
+						<input id="day_mo" type="checkbox" />
+						<input id="day_tu" type="checkbox" />
+						<input id="day_we" type="checkbox" />
+						<input id="day_th" type="checkbox" />
+						<input id="day_fr" type="checkbox" />
+						<input id="day_sa" type="checkbox" />
+					</td>
+					<td><input type="text" id="link_name" /></td>
+					<td><input type="text" id="link_url" /></td>
+					<td><input type="checkbox" disabled="disabled" checked="checked" /></td>
+					<td><input type="button" id="link_add" value="Add" /></td>
+				</tr>
+			</tfoot>
+		</table>
+		<div id="dump_area" style="display: none;">
+			<br />
+			<br />
+			<textarea id="dump_me"></textarea>
+			<input type="button" id="dump_button" value="Dump" />
+		</div>
+	</body>
+</html>
