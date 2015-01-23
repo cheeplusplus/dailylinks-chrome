@@ -13,6 +13,6 @@ function intToByteArray(val) {
 
 function byteArrayToInt(arr) {
     var intStr = arr.map(function(v) { if (v) { return 1; } return 0; }).join("");
-    var intVal = intParse(intStr, 2);
+    var intVal = parseInt(intStr, 2);
     return intVal;
 }

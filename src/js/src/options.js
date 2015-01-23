@@ -8,7 +8,6 @@ function optionsLoaded(obj) {
 
 function bindOptions() {
 	jQuery("#link_add").click(addNewLink);
-	jQuery("#dump_button").click(dumpLinks);
 }
 
 var links_state;
@@ -141,33 +140,39 @@ function moveLinkDown(e) {
 
 function updateDay(e) {
 	var checkbox = jQuery(e.target);
-	var row = checkbox.parents("tr");
-	var id = row.data("id");
+	var trow = checkbox.parents("tr");
+	var id = trow.data("id");
 	if (id <= 0) return;
 
 	var row = links_state[id - 1];
 	var modDay = checkbox.data("day");
-	row.days[modDay] = checkbox.prop("checked");
+	var arr = intToByteArray(row[0]);
+	arr[modDay] = checkbox.prop("checked");
+	row[0] = byteArrayToInt(arr);
+	//links_state[id - 1] = row;
 	saveLinks();
 }
 
 function updateEnabled(e) {
 	var checkbox = jQuery(e.target);
-	var row = checkbox.parents("tr");
-	var id = row.data("id");
+	var trow = checkbox.parents("tr");
+	var id = trow.data("id");
 	if (id <= 0) return;
 
 	var row = links_state[id - 1];
-	row.enabled = checkbox.prop("checked");
+	var arr = intToByteArray(row[0]);
+	arr[7] = checkbox.prop("checked");
+	row[0] = byteArrayToInt(arr);
+	//links_state[id - 1] = row;
 	saveLinks();
 }
 
-function showDumpZone() {
+function showImportArea() {
 	jQuery("#dump_area").show();
 }
 
 // Dumps in the old comicrss config format
-function dumpLinks() {
+function importLinksOld() {
 	var textArea = jQuery("#dump_me");
 	var lines = textArea.val().split("\n");
 	var reg_tx = /array\(\"(\d+)\",\"(.+)\",\"(.+)\"\)/;
@@ -206,6 +211,18 @@ function dumpLinks() {
 	}
 
 	saveLinks();
+}
+
+function importLinks() {
+	var textArea = jQuery("#dump_me");
+	var text = textArea.val();
+	links_state = JSON.parse(text);
+	saveLinks();
+}
+
+function exportLinks() {
+	jQuery("#dump_area").show();
+	jQuery("#dump_me").val(JSON.stringify(links_state));
 }
 
 jQuery(document).ready(function() {
