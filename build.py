@@ -13,9 +13,9 @@ def zip_dirs(zipFile, directory):
 			archiveName = os.path.join(archiveRoot, file)
 			zipFile.write(fullPath, archiveName, zipfile.ZIP_DEFLATED)
 
-print "-- Building DailyLinks extension --"
+print("-- Building DailyLinks extension --")
 
 with zipfile.ZipFile("dailylinks.zip", "w", compression=zipfile.ZIP_DEFLATED) as zFile:
 	zip_dirs(zFile, "src")
 
-print "Complete!"
+print("Complete!")
